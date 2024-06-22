@@ -120,7 +120,7 @@
             <div class="container">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-9 text-center text-xl-start" style="text-align: center;">
-                        <h1 class="titulo">AQUI O PLANO É NOSSO.<br>E NOSSO PLANO, É CONSTRUIR<br> LAJES JUNTO COM VOCÊ.<p class="subtitulo">Deixe sua contribuição para o nosso plano de governo.</p>
+                        <h1 class="titulo">AQUI O PLANO É NOSSO.<br>E NOSSO PLANO É CONSTRUIR<br> LAJES JUNTO COM VOCÊ.<p class="subtitulo">Deixe sua contribuição para o nosso plano de governo.</p>
                         </h1>
                     </div>
                     <div class="col-xl-3 cta-btn-container text-center">
@@ -144,19 +144,19 @@
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-md-12">
-                                    <label for="name-field" class="pb-2">Nome (Opicional)</label>
+                                    <label for="name-field" class="pb-2">Nome (Opcional)</label>
                                     <input type="text" name="name" id="name-field" class="form-control" placeholder="Seu nome">
                                     <small class="form-text text-muted">Seu nome é opcional, caso não queira se identificar.</small>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="subject-field" class="pb-2">Telefone/Whatsapp (Opicional)</label>
+                                    <label for="subject-field" class="pb-2">Telefone/Whatsapp (Opcional)</label>
                                     <input type="text" class="form-control" name="telefone" id="telefone-field" placeholder="(84) 00000-0000">
-                                    <small class="form-text text-muted">Seu telefone/Whatsapp é opicional, mas útil para que possamos entrar em contato, se necessário.</small>
+                                    <small class="form-text text-muted">Seu telefone/Whatsapp é opcional, mas útil para que possamos entrar em contato, se necessário.</small>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="email-field" class="pb-2">E-mail (Opicional)</label>
+                                    <label for="email-field" class="pb-2">E-mail (Opcional)</label>
                                     <input type="email" class="form-control" name="email" id="email-field" placeholder="Seu e-mail">
                                     <small class="form-text text-muted">Seu e-mail é opcional, mas útil caso precisemos esclarecer sua sugestão.</small>
                                 </div>
