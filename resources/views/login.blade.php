@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BORALAJEAR! | Login</title>
     <!-- Favicons -->
-    <link href="{{ asset('public/img/elemento.ico') }}" rel="icon">
-    <link href="{{ asset('public/img/elemento.ico') }}" rel="apple-touch-icon">
+    <link href="{{ asset('img/elemento.ico') }}" rel="icon">
+    <link href="{{ asset('img/elemento.ico') }}" rel="apple-touch-icon">
     <link rel="stylesheet" href="{{ asset('styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,28 +74,38 @@
             margin-bottom: 10px;
             border: 1px solid #f5c6cb;
             border-radius: 3px;
+            width: 100%;
+            /* Garante que o alerta ocupe toda a largura do container */
+            text-align: center;
+            /* Centraliza o texto dentro do alerta */
         }
     </style>
 </head>
 
 <body>
+
     <div class="login-container">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                {{ $errors->first() }}
+            </div>
+        @endif
         <form action="{{ url('/admin/autenticar') }}" method="post">
             @csrf
             <h2>Login</h2>
-            @if (session('erroLogin'))
-                <div class="alert alert-danger">{{ session('erroLogin') }}</div>
-            @endif
             <div class="input-group">
                 <label for="username">Usuário</label>
-                <input type="text" id="username" name="usuario" placeholder="Seu usuário" required>
+                <input type="text" id="username" name="usuario" placeholder="Seu usuário" required
+                    value="{{ old('usuario') }}">
             </div>
             <div class="input-group">
                 <label for="password">Senha</label>
                 <input type="password" id="password" name="senha" placeholder="Sua senha" required>
             </div>
             <button class="mb-4" type="submit">Entrar</button>
-            <a style="margin-top: 3vw;" href="{{ url('/') }}">Voltar para página</a>
+            <a href="{{ url('/') }}" class="btn btn-link">
+                <i class="bi bi-arrow-left"></i> Voltar para página
+            </a>
         </form>
     </div>
 </body>

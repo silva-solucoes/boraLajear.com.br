@@ -4,34 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AuthController extends Controller
 {
-    // Exibir o formulário de login
     public function showLoginForm()
     {
         return view('login');
     }
 
-    // Processar o login
-    public function login(Request $request)
+    public function authenticate(Request $request)
     {
-        // Validar os dados do formulário de login
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+            'usuario' => ['required', 'string'],
+            'senha' => ['required', 'string'],
         ]);
 
-        // Tentar autenticar o usuário
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt(['username' => $credentials['usuario'], 'password' => $credentials['senha']])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard'); // Redirecionar para o dashboard após login bem-sucedido
+            return redirect()->intended('dashboard');
         }
 
-        // Retornar com mensagem de erro se a autenticação falhar
+        // Se as credenciais estiverem incorretas, redirecionar de volta para o login
+        // com uma mensagem de erro
         return back()->withErrors([
-            'email' => 'As credenciais fornecidas não correspondem aos nossos registros.',
-        ]);
+            'erroLogin' => 'As credenciais fornecidas não correspondem aos nossos registros.',
+        ])->withInput($request->only('usuario'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
