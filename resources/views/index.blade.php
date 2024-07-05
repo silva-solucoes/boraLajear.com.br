@@ -15,7 +15,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -23,13 +25,14 @@
     <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/8.12.0/video-js.css" rel="stylesheet" />
 
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Verifica se existe a variável de sessão cadastro_sucesso e exibe o popup se existir
             @if (session('cadastro_sucesso'))
                 var popup = document.getElementById('popup');
@@ -69,6 +72,23 @@
         }
     </script>
 
+
+
+    <style>
+        .video-section {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+
 </head>
 
 <body class="index-page">
@@ -87,7 +107,8 @@
             <div class="popup-content">
                 <span class="close" onclick="fecharPopup()">&times;</span>
                 <div style="text-align: center;">
-                    <img src="{{ asset('img/visto.gif') }}" alt="Ícone de Visto" style="width: 15vw; height: 15vw; margin-bottom: 20px;">
+                    <img src="{{ asset('img/visto.gif') }}" alt="Ícone de Visto"
+                        style="width: 15vw; height: 15vw; margin-bottom: 20px;">
                 </div>
                 <h2><span class="parabens">Recebemos sua sugestão com sucesso!</span></h2>
                 <p><span class="agradecemos">Agradecemos pela sua contribuição.</span></p>
@@ -97,7 +118,8 @@
         <section id="hero" class="hero imgFundo section">
             <div class="container text-center">
                 <div class="row gy-4 ajustarIMG">
-                    <div class="img-bg col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
+                    <div class="img-bg col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center"
+                        data-aos="zoom-out">
                         <!--<p><span class="highlight">BORA</span>LAJEAR!</p>-->
                     </div>
                 </div>
@@ -106,10 +128,15 @@
                     <p>Participe e contribua com o nosso plano de governo.</p>
                 </section>
                 <section class="video-section">
-                    <video controls autoplay class="video-placeholder">
-                        <div class="play-button"></div>
-                        <source src="{{ asset('video/video.mp4') }}" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
+                    <video id="my-video" class="video-js" controls preload="auto" width="940" height="529"
+                        poster="MY_VIDEO_POSTER.jpg" data-setup="{}" autoplay muted>
+                        <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4" />
+                        <source src="MY_VIDEO.webm" type="video/webm" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                        </p>
                     </video>
                 </section>
             </div>
@@ -120,7 +147,8 @@
             <div class="container">
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     <div class="col-xl-9 text-center text-xl-start" style="text-align: center;">
-                        <h1 class="titulo">AQUI O PLANO É NOSSO.<br>E NOSSO PLANO É CONSTRUIR<br> LAJES JUNTO COM VOCÊ.<p class="subtitulo">Deixe sua contribuição para o nosso plano de governo.</p>
+                        <h1 class="titulo">AQUI O PLANO É NOSSO.<br>E NOSSO PLANO É CONSTRUIR<br> LAJES JUNTO COM VOCÊ.
+                            <p class="subtitulo">Deixe sua contribuição para o nosso plano de governo.</p>
                         </h1>
                     </div>
                     <div class="col-xl-3 cta-btn-container text-center">
@@ -134,44 +162,57 @@
         <section id="contact" class="contact section">
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2><b>Não deixe sua voz se perder no silêncio.</b> Sua participação é mais do que um direito; é um dever.<br>Junte-se a nós e seja parte da história.</h2>
+                <h2><b>Não deixe sua voz se perder no silêncio.</b> Sua participação é mais do que um direito; é um
+                    dever.<br>Junte-se a nós e seja parte da história.</h2>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="row gy-4">
                     <div class="col-lg-12">
-                        <form action="{{ url('/paginas/forms') }}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                        <form action="{{ url('/paginas/forms') }}" method="post" class="php-email-form"
+                            data-aos="fade-up" data-aos-delay="200">
                             @csrf
                             <div class="row gy-4">
                                 <div class="col-md-12">
                                     <label for="name-field" class="pb-2">Nome (Opcional)</label>
-                                    <input type="text" name="name" id="name-field" class="form-control" placeholder="Seu nome">
-                                    <small class="form-text text-muted">Seu nome é opcional, caso não queira se identificar.</small>
+                                    <input type="text" name="name" id="name-field" class="form-control"
+                                        placeholder="Seu nome">
+                                    <small class="form-text text-muted">Seu nome é opcional, caso não queira se
+                                        identificar.</small>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="subject-field" class="pb-2">Telefone/Whatsapp (Opcional)</label>
-                                    <input type="text" class="form-control" name="telefone" id="telefone-field" placeholder="(84) 00000-0000">
-                                    <small class="form-text text-muted">Seu telefone/Whatsapp é opcional, mas útil para que possamos entrar em contato, se necessário.</small>
+                                    <input type="text" class="form-control" name="telefone" id="telefone-field"
+                                        placeholder="(84) 00000-0000">
+                                    <small class="form-text text-muted">Seu telefone/Whatsapp é opcional, mas útil para
+                                        que possamos entrar em contato, se necessário.</small>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="email-field" class="pb-2">E-mail (Opcional)</label>
-                                    <input type="email" class="form-control" name="email" id="email-field" placeholder="Seu e-mail">
-                                    <small class="form-text text-muted">Seu e-mail é opcional, mas útil caso precisemos esclarecer sua sugestão.</small>
+                                    <input type="email" class="form-control" name="email" id="email-field"
+                                        placeholder="Seu e-mail">
+                                    <small class="form-text text-muted">Seu e-mail é opcional, mas útil caso precisemos
+                                        esclarecer sua sugestão.</small>
                                 </div>
 
                                 <div class="col-md-12">
-                                    <label for="category-field" class="pb-2">Selecione a área relacionada à sua sugestão *</label>
+                                    <label for="category-field" class="pb-2">Selecione a área relacionada à sua sugestão
+                                        *</label>
                                     <select class="form-control" name="category" id="category-field" required>
                                         <option value="" disabled selected>Escolha uma opção</option>
-                                        <option value="turismo-cultura-meio-ambiente">TURISMO, CULTURA E MEIO AMBIENTE</option>
+                                        <option value="turismo-cultura-meio-ambiente">TURISMO, CULTURA E MEIO AMBIENTE
+                                        </option>
                                         <option value="saude">SAÚDE</option>
                                         <option value="educacao">EDUCAÇÃO</option>
-                                        <option value="administracao-seguranca-publica">ADMINISTRAÇÃO E SEGURANÇA PÚBLICA</option>
-                                        <option value="transportes-mobilidade-urbana">TRANSPORTES E MOBILIDADE URBANA</option>
+                                        <option value="administracao-seguranca-publica">ADMINISTRAÇÃO E SEGURANÇA
+                                            PÚBLICA</option>
+                                        <option value="transportes-mobilidade-urbana">TRANSPORTES E MOBILIDADE URBANA
+                                        </option>
                                         <option value="juventude-esporte-lazer">JUVENTUDE, ESPORTE E LAZER</option>
-                                        <option value="infraestrutura-servicos-urbanos">INFRAESTRUTURA E SERVIÇOS URBANOS</option>
+                                        <option value="infraestrutura-servicos-urbanos">INFRAESTRUTURA E SERVIÇOS
+                                            URBANOS</option>
                                         <option value="agricultura">AGRICULTURA</option>
                                         <option value="economia">ECONOMIA</option>
                                         <option value="social-trabalho-habitacao">SOCIAL, TRABALHO E HABITAÇÃO</option>
@@ -181,12 +222,18 @@
 
                                 <div class="col-md-12">
                                     <label for="message-field" class="pb-2">Sugestões para o Plano de Governo *</label>
-                                    <textarea class="form-control" name="message" rows="10" id="message-field" required placeholder="Sua sugestão"></textarea>
+                                    <textarea class="form-control" name="message" rows="10" id="message-field" required
+                                        placeholder="Sua sugestão"></textarea>
                                 </div>
 
                                 <div class="col-md-12 d-flex align-items-center">
                                     <input type="checkbox" id="agree-checkbox" name="termo" class="me-2" required>
-                                    <label for="agree-checkbox" style="text-align: justify;">Ao preencher este formulário, você concorda com o uso de seus dados pessoais de acordo com a LGPD (Lei Geral de Proteção de Dados). Seus dados serão usados apenas para os fins relacionados a esta consulta e não serão compartilhados com terceiros sem autorização. Ao clicar em enviar, você confirma que leu e concorda com nossos termos de Uso e Política de Privacidade.</label>
+                                    <label for="agree-checkbox" style="text-align: justify;">Ao preencher este
+                                        formulário, você concorda com o uso de seus dados pessoais de acordo com a LGPD
+                                        (Lei Geral de Proteção de Dados). Seus dados serão usados apenas para os fins
+                                        relacionados a esta consulta e não serão compartilhados com terceiros sem
+                                        autorização. Ao clicar em enviar, você confirma que leu e concorda com nossos
+                                        termos de Uso e Política de Privacidade.</label>
                                 </div>
 
                                 <div class="col-md-12 text-center">
@@ -215,7 +262,8 @@
     </footer>
 
     <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- Preloader -->
     <div id="preloader"></div>
@@ -233,6 +281,7 @@
     <!-- Main JS File -->
     <script src="{{ asset('js/script.js') }}"></script>
 
+    <script src="https://vjs.zencdn.net/8.12.0/video.min.js"></script>
 </body>
 
 </html>

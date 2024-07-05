@@ -898,7 +898,7 @@ section,
   background-size: cover; /* Ajusta o tamanho da imagem de fundo para cobrir completamente o elemento */
   background-repeat: no-repeat; /* Evita a repetição da imagem de fundo */
   background-position: inherit; /* Centraliza a imagem de fundo */
-  z-index: 1; /* Coloca a imagem de fundo na camada de exibição mais baixa */
+  /*z-index: 1; Coloca a imagem de fundo na camada de exibição mais baixa */
   opacity: 1; /* Defina a opacidade conforme necessário */
 }
 
