@@ -22,6 +22,7 @@
 
     <!-- Alterar a cor da barra do navegador -->
     <meta name="theme-color" content="#048f2a">
+    <meta name="msapplication-navbutton-color" content="#048f2a">
 
     <!-- Favicons -->
     <link href="{{ asset('img/elemento.ico') }}" rel="icon">
