@@ -94,7 +94,7 @@
             <div class="navbar-header">
                 <div class="d-flex">
                     <div class="navbar-brand-box">
-                        <a href="index.html" class="logo logo-dark">
+                        <a href="/dashboard" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-sm-dark" height="26">
                             </span>
@@ -102,7 +102,7 @@
                                 <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-dark" height="24">
                             </span>
                         </a>
-                        <a href="index.html" class="logo logo-light">
+                        <a href="/dashboard" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-sm-light" height="26">
                             </span>
@@ -282,7 +282,7 @@
             </div>
         </div>
 
-        
+
         <!-- Conteúdo da sua página dashboard -->
         <div class="main-content">
             <div class="page-content">
@@ -366,7 +366,7 @@
                                                 $porcentagemTurismo = ($dados['totalRegistros'] > 0) ? ($dados[$categoria] / $dados['totalRegistros']) * 100 : 0;
                                                 $porcentagemTexto = sprintf("%.2f%%", $porcentagemTurismo);
                                             @endphp
-                                            
+
                                             <p class="font-600 mb-1">{{ strtoupper($categoria) }} <span class="text-primary float-end"><b>{{ $porcentagemTexto }}</b></span></p>
                                             <div class="progress mb-3">
                                                 <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $porcentagemTurismo }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $porcentagemTexto }};"></div></div>
@@ -385,7 +385,7 @@
                 </div> <!-- container-fluid -->
             </div> <!-- page-content -->
         </div> <!-- main-content-->
-        
+
 
         <footer class="footer">
             <div class="container-fluid">
