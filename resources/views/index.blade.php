@@ -128,11 +128,12 @@
                     <p>Participe e contribua com o nosso plano de governo.</p>
                 </section>
                 <section class="video-section">
-                    <video width="940" height="529" controls autoplay muted>
-                        <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
-                        Seu navegador não suporta o elemento de vídeo.
-                    </video>
-                    
+                    <div class="video-container">
+                        <video controls autoplay muted>
+                            <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
+                            Seu navegador não suporta o elemento de vídeo.
+                        </video>
+                    </div>
                 </section>
             </div>
         </section><!-- /Hero Section -->
