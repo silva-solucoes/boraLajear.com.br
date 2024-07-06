@@ -217,20 +217,20 @@
                                         *</label>
                                     <select class="form-control" name="category" id="category-field" required>
                                         <option value="" disabled selected>Escolha uma opção</option>
-                                        <option value="turismo-cultura-meio-ambiente">TURISMO, CULTURA E MEIO AMBIENTE
+                                        <option value="Turismo, Cultura e Meio Ambiente">TURISMO, CULTURA E MEIO AMBIENTE
                                         </option>
-                                        <option value="saude">SAÚDE</option>
-                                        <option value="educacao">EDUCAÇÃO</option>
-                                        <option value="administracao-seguranca-publica">ADMINISTRAÇÃO E SEGURANÇA
+                                        <option value="Saúde">SAÚDE</option>
+                                        <option value="Educação">EDUCAÇÃO</option>
+                                        <option value="Administração e Seguranca">ADMINISTRAÇÃO E SEGURANÇA
                                             PÚBLICA</option>
-                                        <option value="transportes-mobilidade-urbana">TRANSPORTES E MOBILIDADE URBANA
+                                        <option value="Transportes e Mobilidade Urbana">TRANSPORTES E MOBILIDADE URBANA
                                         </option>
-                                        <option value="juventude-esporte-lazer">JUVENTUDE, ESPORTE E LAZER</option>
-                                        <option value="infraestrutura-servicos-urbanos">INFRAESTRUTURA E SERVIÇOS
+                                        <option value="Juventude, Esporte e Lazer">JUVENTUDE, ESPORTE E LAZER</option>
+                                        <option value="Infraestrutura e Serviços Urbanos">INFRAESTRUTURA E SERVIÇOS
                                             URBANOS</option>
-                                        <option value="agricultura">AGRICULTURA</option>
-                                        <option value="economia">ECONOMIA</option>
-                                        <option value="social-trabalho-habitacao">SOCIAL, TRABALHO E HABITAÇÃO</option>
+                                        <option value="Agricultura">AGRICULTURA</option>
+                                        <option value="Economia">ECONOMIA</option>
+                                        <option value="Social, Trabalho e Habitação">SOCIAL, TRABALHO E HABITAÇÃO</option>
                                         <option value="outro">Outro</option>
                                     </select>
                                 </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Models\PageView;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\SugestaoController;
 
 
 Route::get('/', function () {
@@ -40,3 +41,5 @@ Route::get('/meu-perfil', [PerfilController::class, 'show'])->name('perfil.mostr
 
 // Rota para processar a atualização do perfil do usuário
 Route::post('/meu-perfil/atualizar', [PerfilController::class, 'update'])->name('perfil.atualizar');
+
+Route::get('/sugestoes', [SugestaoController::class, 'index'])->name('sugestoes.index');
