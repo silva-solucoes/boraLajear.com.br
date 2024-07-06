@@ -128,16 +128,11 @@
                     <p>Participe e contribua com o nosso plano de governo.</p>
                 </section>
                 <section class="video-section">
-                    <video id="my-video" class="video-js" controls preload="auto" width="940" height="529"
-                        poster="MY_VIDEO_POSTER.jpg" data-setup="{}" autoplay muted>
-                        <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4" />
-                        <source src="MY_VIDEO.webm" type="video/webm" />
-                        <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a
-                            web browser that
-                            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                        </p>
+                    <video width="940" height="529" controls autoplay muted>
+                        <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
                     </video>
+                    
                 </section>
             </div>
         </section><!-- /Hero Section -->
@@ -254,10 +249,7 @@
         </section><!-- /Contact Section -->
 
     </main>
-    <video width="640" height="480" controls autoplay muted>
-    <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
-    Seu navegador não suporta o elemento de vídeo.
-</video>
+
     <footer id="footer" class="footer">
         <div class="container copyright text-center mt-4">
             <p>FELIPE MENEZES | PRÉ-CANDIDATO A PREFEITO</p>
