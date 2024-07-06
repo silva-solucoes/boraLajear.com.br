@@ -1,0 +1,9 @@
+<IfModule mod_headers.c>
+    Header always set Set-Cookie "SameSite=None; Secure"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
+</IfModule>
