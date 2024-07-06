@@ -194,7 +194,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                                 <!-- Ícone de seta para baixo -->
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="#">Lista de Sugestões</a></li>
+                                <li class="{{ Request::is('listar-sugestoes') ? 'active' : '' }}"><a href="/sugestoes">Lista de Sugestões</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#backupModal2">Exportar Dados</a>
                                 </li>
                             </ul>
