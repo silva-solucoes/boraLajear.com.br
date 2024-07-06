@@ -95,18 +95,18 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                     <div class="navbar-brand-box">
                         <a href="/dashboard" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-sm-dark" height="26">
+                                <img src="{{ asset('img/Admin/logo-oficial.png') }}" alt="logo-sm-dark" height="26">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-dark" height="24">
+                                <img src="{{ asset('img/Admin/logo-oficial.png') }}" alt="logo-dark" height="24">
                             </span>
                         </a>
                         <a href="/dashboard" class="logo logo-light">
                             <span class="logo-sm">
-                                <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-sm-light" height="26">
+                                <img src="{{ asset('img/Admin/logo-oficial.png') }}" alt="logo-sm-light" height="26">
                             </span>
                             <span class="logo-lg">
-                                <img src="{{ asset('img/admin/logo-oficial.png') }}" alt="logo-light" height="24">
+                                <img src="{{ asset('img/Admin/logo-oficial.png') }}" alt="logo-light" height="24">
                             </span>
                         </a>
                     </div>
@@ -143,7 +143,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
 
                     <div class="dropdown d-inline-block user-dropdown">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('img/admin/8388392.png') }}" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="{{ asset('img/Admin/8388392.png') }}" alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
                             <i class="bi bi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
