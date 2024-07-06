@@ -301,6 +301,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                                 <div class="mb-3">
                                     <label for="categoria" class="form-label">Filtrar por Categoria:</label>
                                     <select class="form-select" id="categoria" name="categoria" onchange="this.form.submit()">
+                                        <option value="" disabled selected>Escolha uma categoria</option>
                                         <option value="">Todas as Categorias</option>
                                         <option value="Turismo, cultura e meio ambiente">Turismo, Cultura e Meio Ambiente</option>
                                         <option value="Saúde">Saúde</option>
