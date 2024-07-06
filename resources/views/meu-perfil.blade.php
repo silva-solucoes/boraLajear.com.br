@@ -143,7 +143,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
 
                     <div class="dropdown d-inline-block user-dropdown">
                         <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="{{ asset('img/admin/8388392.png') }}" alt="Header Avatar">
+                            <img class="rounded-circle header-profile-user" src="{{ asset('img/Admin/8388392.png') }}" alt="Header Avatar">
                             <span class="d-none d-xl-inline-block ms-1">{{ Auth::user()->name }}</span>
                             <i class="bi bi-chevron-down d-none d-xl-inline-block"></i>
                         </button>
@@ -301,7 +301,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                                 <div class="card-body">
                                     <h4 class="mt-0 card-title">Informações do Usuário</h4>
                                     <div class="text-center mb-3">
-                                        <img src="{{ asset('img/admin/8388392.png') }}" alt="Avatar" class="rounded-circle avatar-lg">
+                                        <img src="{{ asset('img/Admin/8388392.png') }}" alt="Avatar" class="rounded-circle avatar-lg">
                                     </div>
                                     <p><strong>Nome:</strong> {{ Auth::user()->name }}</p>
                                     <p><strong>Email:</strong> {{ Auth::user()->email ?: 'Não informado' }}</p>
