@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use PDO;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use App\Models\PageView;
 
 class DashboardController extends Controller
 {
@@ -22,7 +23,8 @@ class DashboardController extends Controller
     public function index()
     {
         $dados = [];
-        
+
+        $indexViews = PageView::where('page', 'index')->first()->views ?? 0;
 
         // Contagem de sugestões por categoria
         $sugestoesPorCategoria = Sugestao::selectRaw('category as Categoria, count(*) as total')
@@ -54,6 +56,7 @@ class DashboardController extends Controller
             'registrosHoje' => Sugestao::whereDate('created_at', today())->count(),
             'porcentagemTexto' => $porcentagemTexto,
             'totalRegistros' => $totalRegistros,
+            'indexViews' => $indexViews
         ];
 
         return view('dashboard', compact('dados'));
