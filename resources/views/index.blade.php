@@ -129,10 +129,11 @@
                 </section>
                 <section class="video-section">
                     <div class="video-container">
-                        <video controls autoplay muted>
+                        <video id="video" controls autoplay muted loop>
                             <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
+                        <button id="unmute-button" class="unmute-button">Clique para ouvir</button>
                     </div>
                 </section>
             </div>
@@ -278,6 +279,30 @@
     <script src="{{ asset('js/script.js') }}"></script>
 
     <script src="https://vjs.zencdn.net/8.12.0/video.min.js"></script>
+    <script>
+        const video = document.getElementById('video');
+        const unmuteButton = document.getElementById('unmute-button');
+
+        // Mostrar o botão de ativar som
+        video.addEventListener('play', () => {
+            if (video.muted) {
+                unmuteButton.style.display = 'block';
+            }
+        });
+
+        // Ativar som ao clicar no botão
+        unmuteButton.addEventListener('click', () => {
+            video.muted = false;
+            unmuteButton.style.display = 'none';
+        });
+
+        // Verificar se o som foi ativado de outra forma
+        video.addEventListener('volumechange', () => {
+            if (!video.muted) {
+                unmuteButton.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>
