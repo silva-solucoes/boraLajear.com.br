@@ -134,7 +134,7 @@
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
                         <button id="unmute-button" class="unmute-button">
-                            <img src="https://image.flaticon.com/icons/png/512/727/727245.png" alt="Unmute">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3221/3221823.png" alt="Unmute">
                         </button>
                     </div>
                 </section>
