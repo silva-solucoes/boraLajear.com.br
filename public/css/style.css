@@ -904,12 +904,14 @@ section,
 
 .video-container {
   position: relative;
-  width: 100%;
-  max-width: 940px;
+  width: 960px;
+  height: 529px;
+  max-width: 100%;
+  margin: auto;
 }
 video {
   width: 100%;
-  height: 529px;
+  height: 100%;
 }
 .unmute-button {
   position: absolute;
@@ -921,10 +923,15 @@ video {
   border: none;
   border-radius: 50%;
   padding: 20px;
-  font-size: 16px;
   cursor: pointer;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation: pulse 1.5s infinite;
+}
+.unmute-button img {
+  width: 30px;
+  height: 30px;
 }
 @keyframes pulse {
   0% {

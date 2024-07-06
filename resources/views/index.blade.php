@@ -133,7 +133,9 @@
                             <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
                             Seu navegador não suporta o elemento de vídeo.
                         </video>
-                        <button id="unmute-button" class="unmute-button">Clique para ouvir</button>
+                        <button id="unmute-button" class="unmute-button">
+                            <img src="https://image.flaticon.com/icons/png/512/727/727245.png" alt="Unmute">
+                        </button>
                     </div>
                 </section>
             </div>
@@ -286,7 +288,7 @@
         // Mostrar o botão de ativar som
         video.addEventListener('play', () => {
             if (video.muted) {
-                unmuteButton.style.display = 'block';
+                unmuteButton.style.display = 'flex';
             }
         });
 
