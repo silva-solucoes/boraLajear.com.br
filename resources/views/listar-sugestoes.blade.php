@@ -149,7 +149,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a class="dropdown-item" href="#"><i class="bi bi-person align-middle me-1"></i> Minha
+                            <a class="dropdown-item" href="/meu-perfil"><i class="bi bi-person align-middle me-1"></i> Minha
                                 conta</a>
                             <div class="dropdown-divider"></div>
                             <!-- Link de logout usando form POST (recomendado) -->
