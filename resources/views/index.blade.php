@@ -254,10 +254,10 @@
         </section><!-- /Contact Section -->
 
     </main>
-    <video width="640" height="480" controls>
-        <source src="https://drive.google.com/uc?export=download&id=1SIj_lCnUEdH7GlyZQzPKSfFO8uwdclYZ" type="video/mp4">
-        Seu navegador não suporta o elemento de vídeo.
-    </video>
+    <video width="640" height="480" controls autoplay muted>
+    <source src="{{ asset('video/video-felipe.mp4') }}" type="video/mp4">
+    Seu navegador não suporta o elemento de vídeo.
+</video>
     <footer id="footer" class="footer">
         <div class="container copyright text-center mt-4">
             <p>FELIPE MENEZES | PRÉ-CANDIDATO A PREFEITO</p>
