@@ -1883,7 +1883,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .container-fluid,body[data-
     --bs-light-rgb: 80,93,105;
     --bs-dark: #505d69;
     --bs-dark-rgb: 80,93,105;
-    --bs-header-bg: #505d69;
+    --bs-header-bg: #2a323c;
     --bs-header-dark-bg: #04a2b3;
     --bs-header-item-color: #919bae;
     --bs-topbar-search-bg: #2b324412;
