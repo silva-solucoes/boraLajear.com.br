@@ -1939,7 +1939,7 @@ body[data-layout=horizontal][data-layout-size=boxed] .container-fluid,body[data-
 }
 
 [data-bs-theme=dark][data-sidebar=dark] {
-    --bs-sidebar-dark-bg: #66d203;
+    --bs-sidebar-dark-bg: #2a323c;
     --bs-sidebar-dark-menu-item-color: #048f2a;
     --bs-sidebar-dark-menu-sub-item-color: #048f2a;
     --bs-sidebar-dark-menu-item-icon-color: #048f2a;
