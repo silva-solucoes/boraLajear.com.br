@@ -26,8 +26,10 @@
     <style>
         .wrap-login100 {
             position: relative;
-            z-index: 1000; /* Garante que o conteúdo esteja em primeiro plano */
+            z-index: 1000;
+            /* Garante que o conteúdo esteja em primeiro plano */
         }
+
         .alert {
             background-color: #f8d7da;
             color: #721c24;
@@ -54,7 +56,7 @@
 </head>
 
 <body>
-    
+
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
@@ -68,6 +70,7 @@
                     </div>
                 @endif
                 <form class="login100-form validate-form" action="{{ url('/admin/autenticar') }}" method="post">
+                    @csrf
                     <span class="login100-form-title">
                         Login de Membro
                     </span>
