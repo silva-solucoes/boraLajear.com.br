@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -8,68 +8,26 @@
     <!-- Favicons -->
     <link href="{{ asset('img/elemento.ico') }}" rel="icon">
     <link href="{{ asset('img/elemento.ico') }}" rel="apple-touch-icon">
-    <link rel="stylesheet" href="{{ asset('styles.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap2/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #2bab3c;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Esconde qualquer excesso de partículas fora da tela */
-        }
-
-        .login-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+        .wrap-login100 {
             position: relative;
-            z-index: 10; /* Garante que o container de login fique acima das partículas */
+            z-index: 1000; /* Garante que o conteúdo esteja em primeiro plano */
         }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .input-group {
-            margin-bottom: 10px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            padding: 8px;
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        button {
-            padding: 10px;
-            background-color: #048f2a;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 30px;
-        }
-
-        button:hover {
-            background-color: #2bab3c;
-        }
-
         .alert {
             background-color: #f8d7da;
             color: #721c24;
@@ -96,34 +54,90 @@
 </head>
 
 <body>
-    <div id="particles-js"></div>
+    
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt=""
+                    style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg);">
+                    <img src="{{ asset('img/boralajear.png') }}" alt="IMG">
+                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+                <form class="login100-form validate-form" action="{{ url('/admin/autenticar') }}" method="post">
+                    <span class="login100-form-title">
+                        Login de Membro
+                    </span>
 
-    <div class="login-container">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                {{ $errors->first() }}
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" id="username" name="usuario" placeholder="Seu usuário"
+                            required value="{{ old('usuario') }}">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" id="password" name="senha" placeholder="Sua senha"
+                            required>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Entrar
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-12">
+                        <span class="txt1">
+                            Versão:
+                        </span>
+                        <a class="txt2" href="#">
+                            1.0.10
+                        </a>
+                    </div>
+
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="{{ url('/') }}">
+                            <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+                            Voltar a página
+
+                        </a>
+                    </div>
+                </form>
             </div>
-        @endif
-        <form action="{{ url('/admin/autenticar') }}" method="post">
-            @csrf
-            <h2>Login</h2>
-            <div class="input-group">
-                <label for="username">Usuário</label>
-                <input type="text" id="username" name="usuario" placeholder="Seu usuário" required
-                    value="{{ old('usuario') }}">
-            </div>
-            <div class="input-group">
-                <label for="password">Senha</label>
-                <input type="password" id="password" name="senha" placeholder="Sua senha" required>
-            </div>
-            <button class="mb-4" type="submit">Entrar</button>
-            <a href="{{ url('/') }}" class="btn btn-link">
-                <i class="bi bi-arrow-left"></i> Voltar para página
-            </a>
-        </form>
+        </div>
     </div>
 
+    <!-- ANIMAÇÃO DE CONEXÃO -->
+    <div id="particles-js"></div>
+
     <!-- Particles.js script -->
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/bootstrap2/js/popper.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap2/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('vendor/tilt/tilt.jquery.min.js') }}"></script>
+
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+
+    <script src="{{ asset('js/login.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
