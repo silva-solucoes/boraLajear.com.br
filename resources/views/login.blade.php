@@ -62,7 +62,7 @@
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt=""
                     style="will-change: transform; transform: perspective(300px) rotateX(0deg) rotateY(0deg);">
-                    <img src="{{ asset('img/boralajear.png') }}" alt="IMG">
+                    <img src="{{ asset('img/img-01.png') }}" alt="IMG">
                 </div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
