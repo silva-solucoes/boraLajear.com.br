@@ -104,7 +104,7 @@
                             Versão:
                         </span>
                         <a class="txt2" href="#">
-                            1.0.10
+                            1.0.20
                         </a>
                     </div>
 
