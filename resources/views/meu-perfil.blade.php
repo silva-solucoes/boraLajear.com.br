@@ -7,7 +7,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
 }
 @endphp
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">

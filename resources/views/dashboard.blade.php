@@ -7,7 +7,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
 }
 @endphp
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -358,19 +358,18 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                                     {{-- Exemplo de exibição de categorias --}}
                                     @if (isset($categorias))
 
-                                    @foreach ($categorias as $categoria)
-                                    @php
-                                    $porcentagemTurismo = ($dados['totalRegistros'] > 0) ? ($dados[$categoria] / $dados['totalRegistros']) * 100 : 0;
-                                    $porcentagemTexto = sprintf("%.2f%%", $porcentagemTurismo);
-                                    @endphp
-
-                                    <p class="font-600 mb-1">{{ strtoupper($categoria) }} <span class="text-primary float-end"><b>{{ $porcentagemTexto }}</b></span></p>
-                                    <div class="progress mb-3">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $porcentagemTurismo }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $porcentagemTexto }};"></div>
-                                    </div>
-                                    @endforeach
+                                        @foreach ($categorias as $categoria)
+                                            @php
+                                                $porcentagemTurismo = ($dados['totalRegistros'] > 0) ? ($dados[$categoria] / $dados['totalRegistros']) * 100 : 0;
+                                                $porcentagemTexto = sprintf("%.2f%%", $porcentagemTurismo);
+                                            @endphp
+                                            
+                                            <p class="font-600 mb-1">{{ strtoupper($categoria) }} <span class="text-primary float-end"><b>{{ $porcentagemTexto }}</b></span></p>
+                                            <div class="progress mb-3">
+                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $porcentagemTurismo }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $porcentagemTexto }};"></div></div>
+                                        @endforeach
                                     @else
-                                    <p>Nenhuma categoria encontrada.</p>
+                                        <p>Nenhuma categoria encontrada.</p>
                                     @endif
                                     {{-- Fim do exemplo --}}
 
