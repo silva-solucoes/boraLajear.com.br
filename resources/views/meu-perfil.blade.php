@@ -194,7 +194,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                                 <!-- Ícone de seta para baixo -->
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="/sugestoes">Lista de Sugestões</a></li>
+                                <li class="{{ Request::is('listar-sugestoes') ? 'active' : '' }}"><a href="/sugestoes">Lista de Sugestões</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#backupModal2">Exportar Dados</a>
                                 </li>
                             </ul>
@@ -274,7 +274,6 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
         </div>
 
 
-        <!-- Conteúdo da sua página dashboard -->
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
@@ -283,12 +282,12 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 titulos">Painel</h4>
+                                <h4 class="mb-sm-0 titulos">Meu Perfil</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="guiaPagina"><a href="javascript:void(0);">Bora Lajear</a><i class="bi bi-chevron-right ms-auto"></i></li>
-                                        <li class="guiaPagina active">Painel</li>
+                                        <li class="guiaPagina active">Meu Perfil</li>
                                     </ol>
                                 </div>
                             </div>
@@ -297,93 +296,60 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                     <!-- Título da página -->
 
                     <div class="row">
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <h4 class="card-title text-muted">Coleta de Hoje</h4>
-                                    <h2 class="mt-3 mb-2">
-                                        @if ($dados['registrosHoje'] > 0)
-                                        <i class="bi bi-arrow-up-circle text-success me-2"></i><b>{{ $dados['registrosHoje'] }}</b>
-                                        @else
-                                        <i class="bi bi-dash-circle text-warning me-2"></i><b>0</b>
-                                        @endif
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center">
-                                <div class="card-body p-t-10">
-                                    <h4 class="card-title text-muted mb-0">Total de Submissões</h4>
-                                    <h2 class="mt-3 mb-2"><i class="bi bi-check-circle text-primary me-2"></i><b>{{ $dados['totalRegistros'] }}</b>
-                                    </h2>
-                                    <p class="text-muted mb-0 mt-3"><b>{{ $dados['porcentagemTexto'] }}</b> dos registros foram feitos nas últimas 24 horas.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center">
-                                <div class="card-body p-t-10">
-                                    <h4 class="card-title text-muted mb-0">Contagem de Acessos</h4>
-                                    <h2 class="mt-3 mb-2"><i class="bi bi-eye text-info me-2"></i><b>{{ $dados['indexViews'] }}</b></h2>
-                                    <p class="text-muted mb-0 mt-3">Total de acessos à página principal.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Estatísticas -->
-
-                    <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mt-0 card-title">Gráfico</h4>
-                                    <div class="chart-container">
-                                        <canvas id="suggestionsChart"></canvas>
+                                    <h4 class="mt-0 card-title">Informações do Usuário</h4>
+                                    <div class="text-center mb-3">
+                                        <img src="{{ asset('img/Admin/8388392.png') }}" alt="Avatar" class="rounded-circle avatar-lg">
                                     </div>
+                                    <p><strong>Nome:</strong> {{ Auth::user()->name }}</p>
+                                    <p><strong>Email:</strong> {{ Auth::user()->email ?: 'Não informado' }}</p>
+                                    <!-- Adicione mais informações do usuário conforme necessário -->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Gráfico -->
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card card-h-100">
+                        <div class="col-lg-6">
+                            @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                            @endif
+
+                            @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                            @endif
+                            <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mb-4 mt-0 card-title">Categorias</h4>
-
-                                    {{-- Exemplo de exibição de categorias --}}
-                                    @if (isset($categorias))
-
-                                    @foreach ($categorias as $categoria)
-                                    @php
-                                    $porcentagemTurismo = ($dados['totalRegistros'] > 0) ? ($dados[$categoria] / $dados['totalRegistros']) * 100 : 0;
-                                    $porcentagemTexto = sprintf("%.2f%%", $porcentagemTurismo);
-                                    @endphp
-
-                                    <p class="font-600 mb-1">{{ strtoupper($categoria) }} <span class="text-primary float-end"><b>{{ $porcentagemTexto }}</b></span></p>
-                                    <div class="progress mb-3">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $porcentagemTurismo }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $porcentagemTexto }};"></div>
-                                    </div>
-                                    @endforeach
-                                    @else
-                                    <p>Nenhuma categoria encontrada.</p>
-                                    @endif
-                                    {{-- Fim do exemplo --}}
-
+                                    <h4 class="mt-0 card-title">Atualizar Credenciais</h4>
+                                    <form id="perfilForm" action="{{ route('perfil.atualizar') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <label for="username" class="form-label">Nome de Usuário</label>
+                                            <input type="text" class="form-control" id="username" name="username" value="{{ old('username') ?? Auth::user()->username }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Nova Senha</label>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Insira uma nova senha forte" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="confirm_password" class="form-label">Confirmar Nova Senha</label>
+                                            <input type="password" class="form-control" id="confirm_password" placeholder="Insira a senha novamente" name="confirm_password" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Categorias -->
+                    <!-- Informações do Usuário e Formulário -->
 
                 </div> <!-- container-fluid -->
             </div> <!-- page-content -->
-        </div> <!-- main-content-->
-
+        </div> <!-- main-content -->
 
         <footer class="footer">
             <div class="container-fluid">
@@ -451,37 +417,17 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
         </div> <!-- end slimscroll-menu-->
     </div>
     <!-- /Right-bar -->
-
     <script>
-        $(document).ready(function() {
-            // Dados do PHP para JavaScript
-            let labels = @json($dados['labels']);
-            let counts = @json($dados['counts']);
+        document.getElementById('perfilForm').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
 
-            const ctx = document.getElementById('suggestionsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Categorias',
-                        data: counts,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+            if (password !== confirm_password) {
+                alert('As senhas precisam ser idênticas. Por favor, verifique e tente novamente.');
+                event.preventDefault(); // Evita o envio do formulário
+            }
         });
     </script>
-
     <script>
         $('#confirmBackup').on('click', function() {
             $.ajax({

@@ -5,8 +5,24 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Bora Lajear!</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <!-- Meta Description -->
+    <meta content="Acesse a landpage oficial do candidato Felipe Menezes. Conheça suas propostas, participe enviando sugestões para o plano de governo e fique por dentro das últimas novidades." name="description">
+
+    <!-- Meta Keywords -->
+    <meta content="Boara Lajear, Lajes, Felipe Menezes, política, plano de governo, sugestões, candidato, eleições, landpage" name="keywords">
+
+    <!-- Open Graph Meta Tags (para redes sociais, incluindo Instagram) -->
+    <meta property="og:title" content="Bora Lajear!">
+    <meta property="og:description" content="Acesse a landpage oficial do candidato Felipe Lajear. Conheça suas propostas, participe enviando sugestões para o plano de governo e fique por dentro das últimas novidades.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.instagram.com/prefeitofelipemenezes/">
+    <meta property="og:image" content="{{ asset('img/Instagram-Icon.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Alterar a cor da barra do navegador -->
+    <meta name="theme-color" content="#048f2a">
+    <meta name="msapplication-navbutton-color" content="#048f2a">
 
     <!-- Favicons -->
     <link href="{{ asset('img/elemento.ico') }}" rel="icon">
@@ -201,20 +217,20 @@
                                         *</label>
                                     <select class="form-control" name="category" id="category-field" required>
                                         <option value="" disabled selected>Escolha uma opção</option>
-                                        <option value="turismo-cultura-meio-ambiente">TURISMO, CULTURA E MEIO AMBIENTE
+                                        <option value="Turismo, Cultura e Meio Ambiente">TURISMO, CULTURA E MEIO AMBIENTE
                                         </option>
-                                        <option value="saude">SAÚDE</option>
-                                        <option value="educacao">EDUCAÇÃO</option>
-                                        <option value="administracao-seguranca-publica">ADMINISTRAÇÃO E SEGURANÇA
+                                        <option value="Saúde">SAÚDE</option>
+                                        <option value="Educação">EDUCAÇÃO</option>
+                                        <option value="Administração e Seguranca">ADMINISTRAÇÃO E SEGURANÇA
                                             PÚBLICA</option>
-                                        <option value="transportes-mobilidade-urbana">TRANSPORTES E MOBILIDADE URBANA
+                                        <option value="Transportes e Mobilidade Urbana">TRANSPORTES E MOBILIDADE URBANA
                                         </option>
-                                        <option value="juventude-esporte-lazer">JUVENTUDE, ESPORTE E LAZER</option>
-                                        <option value="infraestrutura-servicos-urbanos">INFRAESTRUTURA E SERVIÇOS
+                                        <option value="Juventude, Esporte e Lazer">JUVENTUDE, ESPORTE E LAZER</option>
+                                        <option value="Infraestrutura e Serviços Urbanos">INFRAESTRUTURA E SERVIÇOS
                                             URBANOS</option>
-                                        <option value="agricultura">AGRICULTURA</option>
-                                        <option value="economia">ECONOMIA</option>
-                                        <option value="social-trabalho-habitacao">SOCIAL, TRABALHO E HABITAÇÃO</option>
+                                        <option value="Agricultura">AGRICULTURA</option>
+                                        <option value="Economia">ECONOMIA</option>
+                                        <option value="Social, Trabalho e Habitação">SOCIAL, TRABALHO E HABITAÇÃO</option>
                                         <option value="outro">Outro</option>
                                     </select>
                                 </div>

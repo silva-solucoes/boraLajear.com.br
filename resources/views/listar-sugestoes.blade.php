@@ -194,7 +194,7 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                                 <!-- Ícone de seta para baixo -->
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="/sugestoes">Lista de Sugestões</a></li>
+                                <li class="{{ Request::is('listar-sugestoes') ? 'active' : '' }}"><a href="/sugestoes">Lista de Sugestões</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#backupModal2">Exportar Dados</a>
                                 </li>
                             </ul>
@@ -274,7 +274,6 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
         </div>
 
 
-        <!-- Conteúdo da sua página dashboard -->
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
@@ -283,12 +282,12 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 titulos">Painel</h4>
+                                <h4 class="mb-sm-0 titulos">Listar Sugestões</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="guiaPagina"><a href="javascript:void(0);">Bora Lajear</a><i class="bi bi-chevron-right ms-auto"></i></li>
-                                        <li class="guiaPagina active">Painel</li>
+                                        <li class="guiaPagina active">Listar Sugestões</li>
                                     </ol>
                                 </div>
                             </div>
@@ -297,93 +296,77 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
                     <!-- Título da página -->
 
                     <div class="row">
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center">
-                                <div class="card-body">
-                                    <h4 class="card-title text-muted">Coleta de Hoje</h4>
-                                    <h2 class="mt-3 mb-2">
-                                        @if ($dados['registrosHoje'] > 0)
-                                        <i class="bi bi-arrow-up-circle text-success me-2"></i><b>{{ $dados['registrosHoje'] }}</b>
-                                        @else
-                                        <i class="bi bi-dash-circle text-warning me-2"></i><b>0</b>
-                                        @endif
-                                    </h2>
+                        <div class="col-12">
+                            <form action="{{ route('sugestoes.index') }}" method="GET">
+                                <div class="mb-3">
+                                    <label for="categoria" class="form-label">Filtrar por Categoria:</label>
+                                    <select class="form-select" id="categoria" name="categoria" onchange="this.form.submit()">
+                                        <option value="" disabled selected>Escolha uma categoria</option>
+                                        <option value="">Todas as Categorias</option>
+                                        <option value="Turismo, cultura e meio ambiente">Turismo, Cultura e Meio Ambiente</option>
+                                        <option value="Saúde">Saúde</option>
+                                        <option value="Educação">Educação</option>
+                                        <option value="Administração e segurança">Administração e Segurança</option>
+                                        <option value="Transportes e Mobilidade Urbana">Transportes e Mobilidade Urbana</option>
+                                        <option value="Juventude, Esporte e Lazer">Juventude, Esporte e Lazer</option>
+                                        <option value="Infraestrutura e serviços urbanos">Infraestrutura e Serviços Urbanos</option>
+                                        <option value="Agricultura">Agricultura</option>
+                                        <option value="Economia">Economia</option>
+                                        <option value="Social, trabalho e habitação">Social, Trabalho e Habitação</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center">
-                                <div class="card-body p-t-10">
-                                    <h4 class="card-title text-muted mb-0">Total de Submissões</h4>
-                                    <h2 class="mt-3 mb-2"><i class="bi bi-check-circle text-primary me-2"></i><b>{{ $dados['totalRegistros'] }}</b>
-                                    </h2>
-                                    <p class="text-muted mb-0 mt-3"><b>{{ $dados['porcentagemTexto'] }}</b> dos registros foram feitos nas últimas 24 horas.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card text-center">
-                                <div class="card-body p-t-10">
-                                    <h4 class="card-title text-muted mb-0">Contagem de Acessos</h4>
-                                    <h2 class="mt-3 mb-2"><i class="bi bi-eye text-info me-2"></i><b>{{ $dados['indexViews'] }}</b></h2>
-                                    <p class="text-muted mb-0 mt-3">Total de acessos à página principal.</p>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                    <!-- Estatísticas -->
 
-                    <div class="row">
-                        <div class="col-lg-12">
+                    <div class="row mt-3">
+                        <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mt-0 card-title">Gráfico</h4>
-                                    <div class="chart-container">
-                                        <canvas id="suggestionsChart"></canvas>
+                                    <!-- Lista de sugestões filtradas por categoria -->
+                                    <h4 class="card-title">Lista de Sugestões</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Nome</th>
+                                                    <th>Telefone</th>
+                                                    <th>E-mail</th>
+                                                    <th>Categoria</th>
+                                                    <th>Sugestões</th>
+                                                    <th>registrado</th>
+                                                    <!-- Adicione mais colunas conforme necessário -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($sugestoes as $sugestao)
+                                                <tr>
+                                                    <td>{{ $sugestao->id }}</td>
+                                                    <td>{{ $sugestao->name }}</td>
+                                                    <td>{{ $sugestao->telefone }}</td>
+                                                    <td>{{ $sugestao->email }}</td>
+                                                    <td>{{ $sugestao->category }}</td>
+                                                    <td>{{ $sugestao->message }}</td>
+                                                    <td>{{ $sugestao->created_at->format('d/m/Y H:i') }}</td>
+                                                    <!-- Adicione mais colunas conforme necessário -->
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
+                                    <!-- Paginação -->
+                                    {{ $sugestoes->appends(request()->query())->links('pagination::bootstrap-4') }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Gráfico -->
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="card card-h-100">
-                                <div class="card-body">
-                                    <h4 class="mb-4 mt-0 card-title">Categorias</h4>
-
-                                    {{-- Exemplo de exibição de categorias --}}
-                                    @if (isset($categorias))
-
-                                    @foreach ($categorias as $categoria)
-                                    @php
-                                    $porcentagemTurismo = ($dados['totalRegistros'] > 0) ? ($dados[$categoria] / $dados['totalRegistros']) * 100 : 0;
-                                    $porcentagemTexto = sprintf("%.2f%%", $porcentagemTurismo);
-                                    @endphp
-
-                                    <p class="font-600 mb-1">{{ strtoupper($categoria) }} <span class="text-primary float-end"><b>{{ $porcentagemTexto }}</b></span></p>
-                                    <div class="progress mb-3">
-                                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="{{ $porcentagemTurismo }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $porcentagemTexto }};"></div>
-                                    </div>
-                                    @endforeach
-                                    @else
-                                    <p>Nenhuma categoria encontrada.</p>
-                                    @endif
-                                    {{-- Fim do exemplo --}}
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Categorias -->
+                    <!-- Tabela de Sugestões -->
 
                 </div> <!-- container-fluid -->
             </div> <!-- page-content -->
-        </div> <!-- main-content-->
-
+        </div> <!-- main-content -->
 
         <footer class="footer">
             <div class="container-fluid">
@@ -451,37 +434,17 @@ exit(); // Encerra o script para evitar que o restante da página seja carregado
         </div> <!-- end slimscroll-menu-->
     </div>
     <!-- /Right-bar -->
-
     <script>
-        $(document).ready(function() {
-            // Dados do PHP para JavaScript
-            let labels = @json($dados['labels']);
-            let counts = @json($dados['counts']);
+        document.getElementById('perfilForm').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            var confirm_password = document.getElementById('confirm_password').value;
 
-            const ctx = document.getElementById('suggestionsChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Categorias',
-                        data: counts,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+            if (password !== confirm_password) {
+                alert('As senhas precisam ser idênticas. Por favor, verifique e tente novamente.');
+                event.preventDefault(); // Evita o envio do formulário
+            }
         });
     </script>
-
     <script>
         $('#confirmBackup').on('click', function() {
             $.ajax({

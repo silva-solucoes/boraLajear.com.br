@@ -4,9 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Models\PageView;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\SugestaoController;
 
 
 Route::get('/', function () {
+    // Incrementa a contagem de acessos
+    $pageView = PageView::firstOrCreate(['page' => 'index']);
+    $pageView->increment('views');
+
     return view('index');
 });
 
@@ -28,3 +35,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::POST('/dashboard/backup', [DashboardController::class, 'performBackup'])->name('backup.perform');
 
 Route::get('/gerar-csv', [DashboardController::class, 'gerarCsv'])->name('sugestao.csv');
+
+// Rota para exibir a página de perfil do usuário
+Route::get('/meu-perfil', [PerfilController::class, 'show'])->name('perfil.mostrar');
+
+// Rota para processar a atualização do perfil do usuário
+Route::post('/meu-perfil/atualizar', [PerfilController::class, 'update'])->name('perfil.atualizar');
+
+Route::get('/sugestoes', [SugestaoController::class, 'index'])->name('sugestoes.index');
